@@ -1,0 +1,132 @@
+type Nutrition {
+  id: ID!
+  profileId: ID!
+  name: String!
+  gender: String!
+  dob: AWSDateTime!
+  weight: Float!
+  height: Float!
+  activity_level: Int!
+}
+
+enum ModelSortDirection {
+  ASC
+  DESC
+}
+
+type ModelNutritionConnection {
+  items: [Nutrition]
+  nextToken: String
+}
+
+input ModelStringFilterInput {
+  ne: String
+  eq: String
+  le: String
+  lt: String
+  ge: String
+  gt: String
+  contains: String
+  notContains: String
+  between: [String]
+  beginsWith: String
+}
+
+input ModelIDFilterInput {
+  ne: ID
+  eq: ID
+  le: ID
+  lt: ID
+  ge: ID
+  gt: ID
+  contains: ID
+  notContains: ID
+  between: [ID]
+  beginsWith: ID
+}
+
+input ModelIntFilterInput {
+  ne: Int
+  eq: Int
+  le: Int
+  lt: Int
+  ge: Int
+  gt: Int
+  contains: Int
+  notContains: Int
+  between: [Int]
+}
+
+input ModelFloatFilterInput {
+  ne: Float
+  eq: Float
+  le: Float
+  lt: Float
+  ge: Float
+  gt: Float
+  contains: Float
+  notContains: Float
+  between: [Float]
+}
+
+input ModelBooleanFilterInput {
+  ne: Boolean
+  eq: Boolean
+}
+
+input ModelNutritionFilterInput {
+  id: ModelIDFilterInput
+  profileId: ModelIDFilterInput
+  name: ModelStringFilterInput
+  gender: ModelStringFilterInput
+  dob: ModelStringFilterInput
+  weight: ModelFloatFilterInput
+  height: ModelFloatFilterInput
+  activity_level: ModelIntFilterInput
+  and: [ModelNutritionFilterInput]
+  or: [ModelNutritionFilterInput]
+  not: ModelNutritionFilterInput
+}
+
+type Query {
+  getNutrition(id: ID!): Nutrition
+  listNutritions(filter: ModelNutritionFilterInput, limit: Int, nextToken: String): ModelNutritionConnection
+}
+
+input CreateNutritionInput {
+  id: ID
+  profileId: ID!
+  name: String!
+  gender: String!
+  dob: AWSDateTime!
+  weight: Float!
+  height: Float!
+  activity_level: Int!
+}
+
+input UpdateNutritionInput {
+  id: ID!
+  profileId: ID
+  name: String
+  gender: String
+  dob: AWSDateTime
+  weight: Float
+  height: Float
+  activity_level: Int
+}
+
+input DeleteNutritionInput {
+  id: ID
+}
+
+type Mutation {
+  createNutrition(input: CreateNutritionInput!): Nutrition
+  updateNutrition(input: UpdateNutritionInput!): Nutrition
+  deleteNutrition(input: DeleteNutritionInput!): Nutrition
+}
+
+type Subscription {
+  onCreateNutrition: Nutrition @aws_subscribe(mutations: ["createNutrition"])
+  onUpdateNutrition: Nutrition @aws_subscribe(mutations: ["updateNutrition"])
+  onDeleteNutrition: Nutrition @aws_subscribe(mutations: ["deleteNutrition"])
+}

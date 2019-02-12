@@ -1,0 +1,10 @@
+type Nutrition @model {
+  id: ID!
+  profileId: ID!
+  name: String!
+	gender: String!
+	dob: AWSDateTime!
+	weight: Float!
+	height: Float!
+	activity_level: Int!
+}

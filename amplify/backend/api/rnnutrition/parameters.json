@@ -1,0 +1,13 @@
+{
+    "AppSyncApiName": "rnnutrition",
+    "schemaGraphql": "s3://utrition-20190211144701-deployment/amplify-appsync-files/schema.graphql.1549939252460",
+    "ResolverBucket": "utrition-20190211144701-deployment",
+    "ResolverRootKey": "amplify-appsync-files",
+    "DeploymentTimestamp": "1549939252460",
+    "AuthCognitoUserPoolId": {
+        "Fn::GetAtt": [
+            "authcognitobff8b0a9",
+            "Outputs.UserPoolId"
+        ]
+    }
+}

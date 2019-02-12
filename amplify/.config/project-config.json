@@ -1,0 +1,20 @@
+{
+    "projectName": "RNNutrition",
+    "projectPath": "/Users/mustafa/Desktop/back_ups/reactN/expo_apps/RNNutrition",
+    "defaultEditor": "code",
+    "frontendHandler": {
+        "javascript": "/Users/mustafa/.nvm/versions/node/v8.8.1/lib/node_modules/@aws-amplify/cli/node_modules/amplify-frontend-javascript"
+    },
+    "javascript": {
+        "framework": "react-native",
+        "config": {
+            "SourceDir": "/",
+            "DistributionDir": "/",
+            "BuildCommand": "npm run-script build",
+            "StartCommand": "npm run-script start"
+        }
+    },
+    "providers": {
+        "awscloudformation": "/Users/mustafa/.nvm/versions/node/v8.8.1/lib/node_modules/@aws-amplify/cli/node_modules/amplify-provider-awscloudformation"
+    }
+}
