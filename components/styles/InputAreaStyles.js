@@ -1,16 +1,16 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Platform } from 'react-native';
 import {Colors, Fonts} from '../../constants'
 
 export default StyleSheet.create({
   textInput: {
-    fontFamily: Fonts.type.base,
-    fontSize: Fonts.size.small, 
-    height: 36,
+    fontFamily: Platform.OS == 'ios' ? Fonts.typeIOS.base :  Fonts.typeAndroid.base,
+    fontSize: Fonts.size.medium, 
+    height: 40,
     color: Colors.coal,
     padding: 10,
     width: 200,
     borderWidth: 1,
-    borderColor: Colors.steel,
+    borderColor: Colors.gray,
     borderRadius: 2,
     backgroundColor: Colors.snow,
     marginBottom: 4

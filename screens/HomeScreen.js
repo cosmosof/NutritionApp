@@ -7,18 +7,29 @@ import {
   Text,
   TouchableOpacity,
   View,
-  AsyncStorage
+  AsyncStorage,
+  SafeAreaView,
+  FlatList
 } from "react-native";
 import { WebBrowser } from "expo";
-import { Auth } from "aws-amplify";
+import Auth from "@aws-amplify/auth";
 import API, { graphqlOperation } from "@aws-amplify/api";
 import { listNutritions } from "../src/graphql/queries";
 import { Card, ListItem, Button, Icon } from "react-native-elements";
+import { Connect } from "aws-amplify-react-native";
+import ListCard from "../components/HomeScreen/ListCard";
+import Center from "../components/Common/Center";
+import AlertMessage from "../components/Common/AlertMessage";
+import Label from "../components/Common/Label";
 import { MonoText } from "../components/StyledText";
+import { Colors, Fonts, ActivityLevel } from "../constants";
+import styles from "./styles/HomeScreenStyles";
 
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
-    header: null
+    headerTitle: (
+      <Label textStyle={styles.navbarHeader} title="Nutrition Profiles" />
+    )
   };
   constructor() {
     super();
@@ -57,40 +68,48 @@ export default class HomeScreen extends React.Component {
   };
   render() {
     return (
-      <View style={styles.container}>
-        <ScrollView
-          style={styles.container}
-          contentContainerStyle={styles.contentContainer}
-        >
-          <Card title="Profiles">
-            {this.state.profileData &&
-              this.state.profileData.map((p, i) => (
-                <ListItem
-                  key={i}
-                  title={p.name}
-                  subtitle={
-                    <View key={i} style={{ margin: 5 }}>
-                      <Text>{p.dob}</Text>
-                      <Text>{p.profileId}</Text>
-                      <Text>{p.gender}</Text>
-                      <Text>{p.weight}</Text>
-                      <Text>{p.height}</Text>
-                      <Text>{p.activity_level}</Text>
-                    </View>
-                  }
-                />
-              ))}
-          </Card>
-
-        </ScrollView>
-      </View>
+      <SafeAreaView style={styles.container}>
+        <Connect query={graphqlOperation(listNutritions)}>
+          {({
+            data: { listNutritions },
+            loading,
+            error
+          }) => {
+            if (error) {
+              return (
+                <Center>
+                  <AlertMessage show title="An error occured" />
+                </Center>
+              );
+            }
+            if (loading || !listNutritions) {
+              return (
+                <Center>
+                  <AlertMessage show title="loading..." />
+                </Center>
+              );
+            }
+            if (listNutritions && listNutritions.items.length === 0) {
+              return (
+                <Center>
+                  <AlertMessage show title="Nothing found..." />
+                </Center>
+              );
+            }
+            return (
+              <FlatList
+                data={listNutritions.items}
+                keyExtractor={item => item.id}
+                //onEndReached={() => console.warn(`onEndReached`)}
+                onEndThreshold={0.5}
+                //onRefresh={() => refetch()}
+                //refreshing={networkStatus === 4}
+                renderItem={({ item }) => <ListCard data={item} />}
+              />
+            );
+          }}
+        </Connect>
+      </SafeAreaView>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff"
-  },
-});

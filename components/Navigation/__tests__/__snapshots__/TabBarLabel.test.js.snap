@@ -1,0 +1,145 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<TabBarLabel> Structure renders correctly 1`] = `
+<Text
+  style={
+    Array [
+      Object {
+        "fontFamily": "AvenirNextCondensed-DemiBold",
+        "textAlign": "center",
+      },
+      undefined,
+      Object {
+        "color": "#58C6F2",
+      },
+    ]
+  }
+>
+  Sample text
+</Text>
+`;
+
+exports[`<TabBarLabel> Structure renders external container style from array 1`] = `
+<Text
+  style={
+    Array [
+      Object {
+        "fontFamily": "AvenirNextCondensed-DemiBold",
+        "textAlign": "center",
+      },
+      undefined,
+      Object {
+        "color": "#58C6F2",
+      },
+    ]
+  }
+>
+  Sample text
+</Text>
+`;
+
+exports[`<TabBarLabel> Structure renders external text style from ID 1`] = `
+<Text
+  style={
+    Array [
+      Object {
+        "fontFamily": "AvenirNextCondensed-DemiBold",
+        "textAlign": "center",
+      },
+      undefined,
+      Object {
+        "color": "#58C6F2",
+      },
+    ]
+  }
+>
+  Sample text
+</Text>
+`;
+
+exports[`<TabBarLabel> Structure renders external text style from ID 2`] = `
+<Text
+  style={
+    Array [
+      Object {
+        "fontFamily": "AvenirNextCondensed-DemiBold",
+        "textAlign": "center",
+      },
+      Object {
+        "fontSize": 12,
+      },
+      Object {
+        "color": "#58C6F2",
+      },
+    ]
+  }
+>
+  Sample text
+</Text>
+`;
+
+exports[`<TabBarLabel> Structure renders external text style from array 1`] = `
+<Text
+  style={
+    Array [
+      Object {
+        "fontFamily": "AvenirNextCondensed-DemiBold",
+        "textAlign": "center",
+      },
+      Array [
+        Object {
+          "color": "blue",
+        },
+        Object {
+          "fontFamily": "sans-serif",
+        },
+      ],
+      Object {
+        "color": "#58C6F2",
+      },
+    ]
+  }
+>
+  Sample text
+</Text>
+`;
+
+exports[`<TabBarLabel> Structure renders external text style from object 1`] = `
+<Text
+  style={
+    Array [
+      Object {
+        "fontFamily": "AvenirNextCondensed-DemiBold",
+        "textAlign": "center",
+      },
+      undefined,
+      Object {
+        "color": "#58C6F2",
+      },
+    ]
+  }
+>
+  Sample text
+</Text>
+`;
+
+exports[`<TabBarLabel> Structure renders external text style from object 2`] = `
+<Text
+  style={
+    Array [
+      Object {
+        "fontFamily": "AvenirNextCondensed-DemiBold",
+        "textAlign": "center",
+      },
+      Object {
+        "color": "black",
+      },
+      Object {
+        "color": "#58C6F2",
+      },
+    ]
+  }
+>
+  Sample text
+</Text>
+`;

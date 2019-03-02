@@ -3,7 +3,20 @@ const type = {
   bold: 'Avenir-Black',
   emphasis: 'HelveticaNeue-Italic'
 }
-
+const typeAndroid = {
+  base: 'sans-serif',
+  condensed: 'sans-serif-condensed'
+};
+const typeIOS = {
+  base: 'AvenirNext-Regular',
+  bold: 'Avenir-Black',
+  semiBold: 'AvenirNext-DemiBold',
+  condensed: 'AvenirNextCondensed-DemiBold',
+  emphasis: 'HelveticaNeue-Italic',
+  medium: 'AvenirNextCondensed-Regular',
+  cbold: 'AvenirNextCondensed-Bold',
+  light: 'AvenirNextCondensed-UltraLight'
+};
 const size = {
   h1: 38,
   h2: 34,
@@ -56,5 +69,7 @@ const style = {
 export default {
   type,
   size,
-  style
+  style,
+  typeAndroid,
+  typeIOS
 }
